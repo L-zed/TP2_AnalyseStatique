@@ -1,0 +1,12 @@
+digraph "graph" {
+	"AA.ma1()"->"AA.ma2()";
+	"AA.ma1()"->"BB.mb3()";
+	"AA.ma2()"->"CC.mc1()";
+	"AA.ma3()"->"BB.mb2()";
+	"CC.mc1()"->"BB.mb1()";
+	"CC.mc2()"->"PrintStream.println()";
+	"BB.mb1()"->"BB.mb2()";
+	"BB.mb2()"->"CC.mc2()";
+	"BB.mb2()"->"AA.ma1()";
+	"BB.mb3()"->"AA.ma3()";
+}
