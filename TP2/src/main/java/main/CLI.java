@@ -1,7 +1,8 @@
 package main;
 
+import exceptions.NullEdgeException;
 import methods.ASTCreator;
-import methods.Graph;
+import methods.GraphConstructor;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class CLI {
         return javaFiles;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NullEdgeException {
 
         System.out.println("                                                            ******************************" +
                 "\n" +
@@ -48,7 +49,11 @@ public class CLI {
         ArrayList<File> javaFiles = listJavaFilesFromFolder(folder);
         ASTCreator ast = new ASTCreator(projectSourcePath, jrePath);
 
-        Graph graph = new Graph("graph");
-        graph.createCallGraph(ast, javaFiles);
+        GraphConstructor graphConstructor = new GraphConstructor("graph");
+        graphConstructor.createGraph(ast, javaFiles);
+        graphConstructor.generateGraph();
+        System.out.println(graphConstructor.getGraph().couplingClasses("AA","BB"));
+
+
     }
 }
