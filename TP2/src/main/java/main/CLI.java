@@ -1,5 +1,7 @@
 package main;
 
+import compositeCluster.HierarchyClusters;
+import compositeCluster.ICluster;
 import exceptions.NullEdgeException;
 import methods.ASTCreator;
 import methods.GraphConstructor;
@@ -7,6 +9,7 @@ import methods.GraphConstructor;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CLI {
 
@@ -49,10 +52,16 @@ public class CLI {
         ArrayList<File> javaFiles = listJavaFilesFromFolder(folder);
         ASTCreator ast = new ASTCreator(projectSourcePath, jrePath);
 
+        //graph
         GraphConstructor graphConstructor = new GraphConstructor("graph");
         graphConstructor.createGraph(ast, javaFiles);
         graphConstructor.generateGraph();
         System.out.println(graphConstructor.getGraph().couplingClasses("AA","BB"));
+
+        HierarchyClusters hierarchyClusters = new HierarchyClusters(graphConstructor.getGraph());
+
+
+        System.out.println(hierarchyClusters.clusteringHierarchy().getClusters().toString());
 
 
     }

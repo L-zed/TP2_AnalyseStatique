@@ -4,5 +4,6 @@ edge[dir=none]
 "AA"->"BB" [ label="4" ]
 "AA"->"CC" [ label="1" ]
 "CC"->"BB" [ label="2" ]
+"CC"->"CC" [ label="1" ]
 "BB"->"BB" [ label="1" ]
 }

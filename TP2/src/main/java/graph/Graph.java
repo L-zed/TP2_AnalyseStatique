@@ -31,21 +31,20 @@ public class Graph {
 
 
     public Edge findEdge (String node1, String node2) {
-        Optional<Edge> result = edges.stream()
-                .filter(e -> e.getNode1().equals(node1) && e.getNode2().equals(node2)
-                        || e.getNode1().equals(node2) && e.getNode2().equals(node1))
-                .findFirst();
-        if (result.isPresent()) {
-            return result.get();
-        }
-        return null;
+        Optional<Edge> result =
+                edges.stream()
+                        .filter(e -> e.getNode1().equals(node1) && e.getNode2().equals(node2) ||
+                                e.getNode1().equals(node2) && e.getNode2().equals(node1))
+                        .findFirst();
+        return result.orElse(null);
     }
 
     public void addEdge(String node1, String node2) {
-        Optional<Edge> result = edges.stream()
-                .filter(e -> e.getNode1().equals(node1) && e.getNode2().equals(node2) ||
-                        e.getNode1().equals(node2) && e.getNode2().equals(node1))
-                .findFirst();
+        Optional<Edge> result =
+                edges.stream()
+                        .filter(e -> e.getNode1().equals(node1) && e.getNode2().equals(node2) ||
+                                e.getNode1().equals(node2) && e.getNode2().equals(node1))
+                        .findFirst();
         if (!result.isPresent()) {
             this.edges.add(new Edge(node1, node2));
         }

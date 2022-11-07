@@ -17,16 +17,12 @@ import visitors.TypeDeclarationVisitor;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
 public class GraphConstructor {
 
-    private final List<String> classesCouples = new ArrayList<>();
     private final String dotFilePath;
     private final String pngFilePath;
     private Graph graph;
@@ -68,10 +64,9 @@ public class GraphConstructor {
 
                 MethodDeclarationVisitor methodDeclarationVisitor = new MethodDeclarationVisitor();
                 typeDeclaration.accept(methodDeclarationVisitor);
-                List<String> values = new ArrayList<>();
                 graph.addNode(typeDeclaration.getName().toString());
-                for (MethodDeclaration method : methodDeclarationVisitor.getMethods()) {
 
+                for (MethodDeclaration method : methodDeclarationVisitor.getMethods()) {
                     MethodInvocationVisitor methodInvocationVisitor = new MethodInvocationVisitor();
                     method.accept(methodInvocationVisitor);
 
@@ -121,8 +116,6 @@ public class GraphConstructor {
         dotToPng();
 
     }
-
-
 
     public void display(){
         for (Edge edge : graph.getEdges()){
