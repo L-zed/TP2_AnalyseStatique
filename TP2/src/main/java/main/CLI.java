@@ -1,15 +1,12 @@
 package main;
 
 import compositeCluster.HierarchyClusters;
-import compositeCluster.ICluster;
-import exceptions.NullEdgeException;
 import methods.ASTCreator;
 import methods.GraphConstructor;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CLI {
 
@@ -25,7 +22,7 @@ public class CLI {
         return javaFiles;
     }
 
-    public static void main(String[] args) throws IOException, NullEdgeException {
+    public static void main(String[] args) throws IOException{
 
         System.out.println("                                                            ******************************" +
                 "\n" +
@@ -62,6 +59,7 @@ public class CLI {
 
 
         System.out.println(hierarchyClusters.clusteringHierarchy().getClusters().toString());
+        System.out.println(hierarchyClusters.getClustersGreaterThanCp(hierarchyClusters.clusteringHierarchy(), 0.1f, 5));
 
 
     }

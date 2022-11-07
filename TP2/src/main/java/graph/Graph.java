@@ -1,6 +1,6 @@
 package graph;
 
-import exceptions.NullEdgeException;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,15 +53,16 @@ public class Graph {
         }
     }
 
-    public float couplingClasses(String firstClass, String secondClass) throws NullEdgeException {
-        if (findEdge(firstClass,secondClass) == null){
-            throw new NullEdgeException("edge is null");
+    public float couplingClasses(String firstClass, String secondClass) {
+        float r = 0;
+        if (findEdge(firstClass,secondClass) != null){
+            Edge edge = findEdge(firstClass,secondClass);
+            int total = 0;
+            for (Edge e : this.getEdges() ){
+                total += e.getWeight();
+            }
+            r = (float) edge.getWeight() / (float) total;
         }
-        Edge edge = findEdge(firstClass,secondClass);
-        int total = 0;
-        for (Edge e : this.getEdges() ){
-            total += e.getWeight();
-        }
-        return (float) edge.getWeight() / (float) total;
+        return r;
     }
 }

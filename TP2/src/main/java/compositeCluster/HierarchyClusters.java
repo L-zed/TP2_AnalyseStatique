@@ -1,8 +1,8 @@
 package compositeCluster;
 
-import exceptions.NullEdgeException;
 import graph.Graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HierarchyClusters {
@@ -25,7 +25,8 @@ public class HierarchyClusters {
         return clusters;
     }
 
-    public ICluster clusteringHierarchy() throws NullEdgeException {
+    // clustering hierarchy
+    public ICluster clusteringHierarchy() {
         Clusters clusters = graphToCluster();
         while (clusters.getClusters().size() > 1){
             ICluster [] closestClusters = findClosestClusters(clusters);
@@ -40,7 +41,7 @@ public class HierarchyClusters {
         return clusters.getClusters().get(0);
     }
 
-    public float couplingClusters (ICluster cluster1, ICluster cluster2) throws NullEdgeException {
+    public float couplingClusters (ICluster cluster1, ICluster cluster2) {
         float result = 0;
 
         List<String> clustersNames1 = cluster1.getClustersNames();
@@ -57,7 +58,7 @@ public class HierarchyClusters {
         return result;
     }
 
-    public ICluster[] findClosestClusters(Clusters clusters) throws NullEdgeException {
+    public ICluster[] findClosestClusters(Clusters clusters){
         ICluster[] closestClusters = new ICluster [2];
         float max = -1;
         for (ICluster clusterI : clusters.getClusters() ){
@@ -73,6 +74,26 @@ public class HierarchyClusters {
             }
         }
         return closestClusters;
+    }
+
+    //get clusters > cp
+
+    public List<ICluster> getClustersGreaterThanCp(ICluster dendrogramme, float cp, int max) {
+        List<ICluster> clusters = new ArrayList<>();
+            if (dendrogramme.getClusters().size() > 1) {
+                float cl = couplingClusters(dendrogramme.getClusters().get(0),
+                        dendrogramme.getClusters().get(1));
+
+                if (cl > cp){
+                    clusters.add(dendrogramme);
+                }
+                if (clusters.size() < max){
+                    clusters.addAll(getClustersGreaterThanCp(dendrogramme.getClusters().get(0), cp, max));
+                    clusters.addAll(getClustersGreaterThanCp(dendrogramme.getClusters().get(1), cp, max));
+                }
+            }
+
+        return clusters;
     }
 
 }
