@@ -1,4 +1,4 @@
-package methods;
+package jdt.methods;
 
 import graph.Edge;
 import graph.Graph;
@@ -11,9 +11,9 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
-import visitors.MethodDeclarationVisitor;
-import visitors.MethodInvocationVisitor;
-import visitors.TypeDeclarationVisitor;
+import jdt.visitors.MethodDeclarationVisitor;
+import jdt.visitors.MethodInvocationVisitor;
+import jdt.visitors.TypeDeclarationVisitor;
 
 import java.io.*;
 import java.util.ArrayList;
