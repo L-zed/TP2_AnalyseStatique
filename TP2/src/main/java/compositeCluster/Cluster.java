@@ -1,7 +1,5 @@
 package compositeCluster;
 
-import com.kitfox.svg.A;
-
 import java.util.*;
 
 public class Cluster implements ICluster{

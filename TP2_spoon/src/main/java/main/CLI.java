@@ -40,8 +40,8 @@ public class CLI {
 
         System.out.println("\n" +
                 "Enter 1 to get coupling metric between two classes  " + "\n" +
-                "Enter 2 to get the dendrogram of your application" +"\n" +
-                "Enter 3 to get modules of your application" + "\n" +
+                "Enter 2 to get the dendrogram as list" +"\n" +
+                "Enter 3 to get modules as list" + "\n" +
                 "Enter 0 to quiet" + "\n");
 
         int entree;
