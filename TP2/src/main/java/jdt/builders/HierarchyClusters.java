@@ -1,5 +1,8 @@
-package compositeCluster;
+package jdt.builders;
 
+import compositeCluster.Cluster;
+import compositeCluster.Clusters;
+import compositeCluster.ICluster;
 import graph.Graph;
 
 import java.util.ArrayList;
@@ -45,7 +48,7 @@ public class HierarchyClusters {
         float result = 0;
 
         List<String> clustersNames1 = cluster1.getClustersNames();
-        List<String> clustersNames2 = cluster2.getClustersNames();
+        java.util.List<String> clustersNames2 = cluster2.getClustersNames();
 
         for (String clusterName1 : clustersNames1) {
             for (String clusterName2 : clustersNames2) {

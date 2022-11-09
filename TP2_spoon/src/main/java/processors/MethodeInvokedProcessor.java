@@ -2,7 +2,6 @@ package processors;
 
 import spoon.processing.AbstractProcessor;
 import spoon.reflect.code.CtInvocation;
-import spoon.reflect.declaration.CtClass;
 
 import java.util.ArrayList;
 import java.util.List;

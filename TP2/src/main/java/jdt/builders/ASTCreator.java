@@ -1,4 +1,4 @@
-package jdt.methods;
+package jdt.builders;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.AST;

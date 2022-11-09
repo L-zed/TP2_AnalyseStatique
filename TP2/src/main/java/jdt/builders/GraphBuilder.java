@@ -1,4 +1,4 @@
-package jdt.methods;
+package jdt.builders;
 
 import graph.Edge;
 import graph.Graph;
@@ -21,14 +21,14 @@ import java.util.List;
 
 import static java.lang.String.format;
 
-public class GraphConstructor {
+public class GraphBuilder {
 
     private final String dotFilePath;
     private final String pngFilePath;
     private Graph graph;
 
 
-    public GraphConstructor(String fileName) {
+    public GraphBuilder(String fileName) {
         dotFilePath = "src/main/resources/" + fileName + ".dot";
         pngFilePath = "src/main/resources/" + fileName + ".png";
         graph = new Graph();

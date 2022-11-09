@@ -11,12 +11,13 @@ import spoon.reflect.declaration.CtClass;
 import spoon.reflect.declaration.CtElement;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
 
 public class GraphBuilder {
-    private Graph graph = new Graph();
+    private Graph graph ;
 
     private final String dotFilePath;
     private final String pngFilePath;
@@ -36,9 +37,11 @@ public class GraphBuilder {
             String classInvokedMethodName = getClassOfInvokedMethod(ctInvocation);
             String classCallerMethodName = getCallerClass(ctInvocation);
             if(classesInApplication.contains(classInvokedMethodName) ) {
-                graph.addNode(classInvokedMethodName);
-                graph.addNode(classCallerMethodName);
-                graph.addEdge(classInvokedMethodName, classCallerMethodName);
+                if ( ! classInvokedMethodName.equals(classCallerMethodName)){
+                    graph.addNode(classInvokedMethodName);
+                    graph.addNode(classCallerMethodName);
+                    graph.addEdge(classInvokedMethodName, classCallerMethodName);
+                }
             }
         }
     }
@@ -49,6 +52,7 @@ public class GraphBuilder {
             ctElement = ctElement.getParent();
         }
         CtClass ctClass = (CtClass) ctElement;
+
         return ctClass.getQualifiedName();
     }
 
@@ -60,6 +64,7 @@ public class GraphBuilder {
         else {
             className = getCallerClass(ctInvocation);
         }
+        String[] names = className.split(".");
         return className;
     }
 
