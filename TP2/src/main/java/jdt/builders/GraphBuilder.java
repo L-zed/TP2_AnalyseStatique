@@ -73,7 +73,10 @@ public class GraphBuilder {
                     for (MethodInvocation methodInvocation : methodInvocationVisitor.getMethods()) {
                         String classNameOfInvokeMethod =  getNameClassOfInvokeMethod(methodInvocation,typeDeclaration);
                         if (classesNamesInApplication.contains(classNameOfInvokeMethod)){
-                            graph.addEdge(typeDeclaration.getName().toString(),classNameOfInvokeMethod);
+                            if (!typeDeclaration.getName().toString().equals(classNameOfInvokeMethod)){
+                                graph.addEdge(typeDeclaration.getName().toString(),classNameOfInvokeMethod);
+                            }
+
                         }
                     }
             }
