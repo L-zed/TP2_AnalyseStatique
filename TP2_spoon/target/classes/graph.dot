@@ -1,13 +1,3 @@
 digraph "graph" {
 edge[dir=none]
-"project.src.BB"->"project.src.AA" [ label="4" ]
-"project.src.CC"->"project.src.AA" [ label="1" ]
-"project.src.CC"->"project.src.BB" [ label="2" ]
-"project.src.EE"->"project.src.DD" [ label="3" ]
-"project.src.FF"->"project.src.EE" [ label="2" ]
-"project.src.GG"->"project.src.FF" [ label="2" ]
-"project.src.HH"->"project.src.GG" [ label="2" ]
-"project.src.II"->"project.src.HH" [ label="2" ]
-"project.src.JJ"->"project.src.II" [ label="2" ]
-"project.src.CC"->"project.src.JJ" [ label="1" ]
 }

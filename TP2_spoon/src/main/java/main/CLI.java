@@ -85,7 +85,6 @@ public class CLI {
                             System.out.println("[" + modules.get(i) + "]");
                         }
                     }
-
             }
             if (entree != 0){
                 System.out.println("enter the number on the question you want, or O to quiet");
