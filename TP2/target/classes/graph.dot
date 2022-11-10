@@ -1,6 +1,13 @@
 digraph "graph" {
 edge[dir=none]
-"AA"->"AA" [ label="2" ]
-"CC"->"CC" [ label="2" ]
-"BB"->"BB" [ label="2" ]
+"II"->"HH" [ label="2" ]
+"II"->"JJ" [ label="2" ]
+"GG"->"FF" [ label="2" ]
+"GG"->"HH" [ label="2" ]
+"AA"->"BB" [ label="4" ]
+"AA"->"CC" [ label="1" ]
+"FF"->"EE" [ label="2" ]
+"DD"->"EE" [ label="3" ]
+"CC"->"BB" [ label="2" ]
+"JJ"->"CC" [ label="1" ]
 }

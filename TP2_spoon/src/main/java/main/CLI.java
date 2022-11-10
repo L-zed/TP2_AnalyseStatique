@@ -68,10 +68,23 @@ public class CLI {
                     System.out.println(hierarchyClusters.clusteringHierarchy().getClusters().toString());
                     break;
                 case 3 :
-                    List<ICluster> modules = hierarchyClusters.getClustersGreaterThanCp(hierarchyClusters.clusteringHierarchy(),
-                            -1f,
-                            5);
-                    System.out.println(modules);
+                    System.out.println("enter CP");
+                    java.util.Scanner entree4 =   new java.util.Scanner(System.in);
+                    float cp = entree4.nextFloat();
+                    List<ICluster> modules =
+                            hierarchyClusters.getClustersGreaterThanCp(
+                                    hierarchyClusters.clusteringHierarchy(),
+                                    cp);
+                    int max  = (hierarchyClusters.getGraph().getNodes().size() / 2);
+                    System.out.println("Modules : ");
+                    if (modules.size() < max){
+                        System.out.println(modules);
+                    }
+                    else{
+                        for (int i = 0; i< max; i++){
+                            System.out.println("[" + modules.get(i) + "]");
+                        }
+                    }
 
             }
             if (entree != 0){

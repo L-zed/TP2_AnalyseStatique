@@ -81,19 +81,17 @@ public class HierarchyClusters {
 
     //get clusters > cp
 
-    public List<ICluster> getClustersGreaterThanCp(ICluster dendrogramme, float cp, int max) {
+    public List<ICluster> getClustersGreaterThanCp(ICluster dendrogram, float cp) {
         List<ICluster> clusters = new ArrayList<>();
-            if (dendrogramme.getClusters().size() > 1) {
-                float cl = couplingClusters(dendrogramme.getClusters().get(0),
-                        dendrogramme.getClusters().get(1));
-
+            if (dendrogram.getClusters().size() > 1) {
+                float cl = couplingClusters(dendrogram.getClusters().get(0),
+                        dendrogram.getClusters().get(1));
                 if (cl > cp){
-                    clusters.add(dendrogramme);
+                    clusters.add(dendrogram);
                 }
-                if (clusters.size() < max){
-                    clusters.addAll(getClustersGreaterThanCp(dendrogramme.getClusters().get(0), cp, max));
-                    clusters.addAll(getClustersGreaterThanCp(dendrogramme.getClusters().get(1), cp, max));
-                }
+                clusters.addAll(getClustersGreaterThanCp(dendrogram.getClusters().get(0), cp));
+                clusters.addAll(getClustersGreaterThanCp(dendrogram.getClusters().get(1), cp));
+
             }
 
         return clusters;
