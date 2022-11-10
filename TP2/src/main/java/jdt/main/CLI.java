@@ -96,6 +96,6 @@ public class CLI {
                 System.out.println("enter the number on the question you want, or O to quiet");
             }
         }while (entree != 0);
-        
+
     }
 }
